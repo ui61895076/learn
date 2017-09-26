@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="list">
+			<input type="button" value="添加" id="btn" @click="add" />
+		<ul>
+			<li v-for="arr in ary">
+				{{arr}}
+			</li>
+		</ul>
+		</div>
+		
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+//总结，这里是结合了数组 还有事件的小例子，这里纠结了一个问题，就是input 跟li 都用到了
+//但是el中只能指定一个元素，所以这里在最外层添加了一个id为list 的元素统一管理了，循环与事件～
+	new Vue({
+		el:'#list',
+		data:{
+			ary:[1,2,3,4]
+		},
+		methods:{
+			add(){
+				console.log(1)
+			var n=this.ary[this.ary.length-1]+1;
+				
+				this.ary.push(n)
+			}
+		}
+	})
+</script>

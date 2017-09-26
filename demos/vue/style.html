@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="p">
+			<p :style="{fontSize:'38px',color:'#f0f'}" >sdfdsfds</p>
+		<p :style="[a,b]">sdfdsfds</p>
+		</div>
+		
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+	new Vue({
+		el:'.p',
+		data:{
+			a:{'fontSize':'68px'},
+			b:{'color':'#00f'}
+		}
+	})
+</script>

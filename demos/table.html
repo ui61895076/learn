@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th colspan="2">4</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="3">11</td>
+					<td>22</td>
+					<td>33</td>
+					<td>44</td>
+					<td>55</td>
+				</tr>
+				<tr>
+					
+					<td>22</td>
+					
+					<td colspan="2">44</td>
+					<td>55</td>
+				</tr>
+				<tr>
+					
+					<td>22</td>
+					<td>33</td>
+					<td>44</td>
+					<td>55</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
+<script>
+//	var ary=[1,2,3,4];
+//	function fn(ary){
+//		ary[0]=0;
+//		ary=[0];
+//		ary[0]=100;
+//		return ary
+//	}
+//	var res=fn(ary);
+//	console.log(ary);
+//	console.log(res)
+
+//
+//var foo=1;
+//function bar(){
+//	console.log(foo)//foo 是假  因为 定义了没有赋值，所以说undefined  undefined是假
+//	if(!foo){//!foo是真
+//		var foo=10
+//	}
+//	console.log(foo)
+//}
+//bar()
+
+
+//function fn(i){
+//	return function(n){
+//		console.log(n+(i++))
+//	}
+//}
+//var f=fn(10);
+//f(20);
+//fn(20)(40);
+//fn(30)(50);
+//f(30)
+
+
+//var i=10;
+//function fn(){
+//	return function(n){
+//		console.log(n+(++i));
+//	}
+//}
+//var f=fn();
+//f(20);
+//fn()(20);
+//fn()(30);
+//f(30);
+
+//var num=10;
+//var obj={num:20};
+//obj.fn=(function(num){
+//	this.num=num*3;
+//	num++;
+//	return function(n){
+//		this.num+=n;
+//		num++;
+//		console.log(num);
+//	}
+//})(obj.num)
+//var fn=obj.fn;
+//fn(5);
+//obj.fn(10);
+//console.log(num,obj.num)
+
+function Fn(){
+	this.x=100;
+	this.y=200;
+	this.getX=function(){
+		console.log(this.x);
+	}
+}
+Fn.prototype.getX=function(){
+	console.log(this.x);
+	
+}
+Fn.prototype.getY=function(){
+	console.log(this.y);
+}
+
+var  f1=new Fn;
+var f2=new Fn;
+console.log(f1.getX===f2.getX);
+console.log(f1.getY===f2.getY);
+console.log(f1.__proto__.getY===Fn.prototype.getY);
+console.log(f1.__proto__.getX===f2.getX);
+console.log(f1.getX===Fn.prototype.getX);
+console.log(f1.constructor);
+console.log(Fn.prototype.__proto__.constructor);
+f1.getX();
+f1.__proto__.getX();
+f2.getY();
+Fn.prototype.getY()
+
+
+////'abcdabdkabdfab'查找ab 出现的位置 及次数；
+//
+//var str='abcdabdkabdfab';
+//var ary=[];
+//var i=0;
+//var f=str.indexOf('ab');
+//ary.push(f)
+//while(f!=-1){
+//	
+//	f=str.indexOf('ab',f+1);
+//	if(f==-1){
+//		break
+//	}
+//	ary.push(f)
+//}
+//console.log(ary)
+
+var obj1={a:100} ;
+var obj2={a:200};
+function fn (obj2){
+	obj2.a=900;
+};
+
+
+
+fn(obj1)
+console.log(obj1.a,obj2.a)
+
+
+var ary=[1,2,3,4];
+function fn1 (ary){
+	ary[0]=0;
+	ary=[0];
+	ary[0]=100;
+	return ary
+}
+var res=fn1(ary);
+
+console.log(ary)
+console.log(res)
+
+
+</script>

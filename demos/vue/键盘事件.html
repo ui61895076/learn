@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="app">
+			<input type="text" @keydown.13="fn">
+		</div>
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+	new Vue({
+		el:".app",
+		methods:{
+			fn(){
+				alert(1)
+			}
+		}
+	})
+</script>

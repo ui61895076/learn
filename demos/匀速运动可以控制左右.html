@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 600px;
+				top: 0;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<input type="button" value="right" id="btn1" style="margin-top: 300px;"/>
+		<input type="button" value="left" id="btn2" style="margin-top: 300px;"/>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+    var oDiv=document.getElementById('box');
+    var oBtn1=document.getElementById('btn1');
+    var oBtn2=document.getElementById('btn2');
+    var max=utils.getWin('clientWidth');
+	var step=10;
+	var timer=null;
+	
+	function move(target){
+		var curLeft=utils.css(oDiv,'left');
+		if(curLeft<=target){
+		   curLeft+=10;
+		    if(curLeft+10>=target){
+		    	window.clearTimeout(timer)
+			    utils.css(oDiv,'left',target);
+			    return;
+		    }
+		   utils.css(oDiv,'left',curLeft);
+		}
+		if(curLeft>=target){
+		    if(curLeft-10<=target){
+		    	utils.css(oDiv,'left',target);
+		    	 console.log(target)
+		    	window.clearTimeout(timer)
+			    return;
+		    }
+		      curLeft-=10;
+		   utils.css(oDiv,'left',curLeft);
+		}
+	}
+	oBtn1.onclick=function(){
+		window.clearInterval(timer);
+		timer=setInterval(function(){
+			move(1000)
+		},10)
+	}
+oBtn2.onclick=function(){
+	window.clearInterval(timer);
+		timer=setInterval(function(){
+			move(0)
+		},10)
+	}
+    
+</script>

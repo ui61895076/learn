@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box1" id="box1"></div>
+	</body>
+</html>
+<script>
+	window.onload=function(){
+		var oDiv=document.getElementById('box1');
+		
+		function addClass(ele,className){
+			var ary=[];
+			ary=className.replace(/^ +| +$/g,'').split(/ +/g);
+		  for(var i=0;i<ary.length;i++){
+				var curClass=ary[i];
+			if(!hasClass(ele,curClass)){
+				ele.className+=' '+curClass;
+			};
+		  }
+		}//添加css类
+		 //console.log(/(^| +)bg( +|$)/.test('bg dd'));
+		 //console.log(/^bg dd$/.exec('bg dd'));
+		
+		function hasClass(ele,className){
+			var reg=new RegExp("(^| +)"+className+"( +|$)");
+			return reg.test(ele.className);
+		}//判断是否包含这个类；
+		
+		function removeClass(ele,className){
+			var ary=[];
+			ary=className.replace(/^ +| +$/g,'').split(/ +/g);
+		  for(var i=0;i<ary.length;i++){
+				var curClass=ary[i];
+			if(hasClass(ele,curClass)){
+				var reg=new RegExp('(^| +)'+curClass+'( +|$)','g');
+				ele.className=ele.className.replace(reg,' ')
+			};
+		  }
+		}//添加css类
+		
+		//console.log(hasClass(oDiv,'box1'));
+		addClass(oDiv,'box1 box2 box3 box3 box4')
+		removeClass(oDiv,'box3 box2')
+		
+		
+	}
+</script>

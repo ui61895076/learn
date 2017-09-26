@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.banner{
+				width: 1000px;
+				height:300px;
+				overflow: hidden;
+				position: relative;
+				
+			}
+			.warp{
+				
+				height: 300px;
+				overflow: hidden;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.banInner{
+				width: 1000px;
+				height: 300px;
+				float: left;
+			}
+			.banInner a img{
+				width: 100%;
+			}
+			.bannerTip{
+				width: 300px;
+			  height: 20px;
+			  position: absolute;
+			  left: 50%;
+			  bottom: 20px;
+			  margin-left: -150px;
+			
+			  
+			}
+			ul{
+				list-style: none;
+			}
+			.bannerTip ul li{
+				float: left;
+				width: 20px;
+				height: 20px;
+				background: #ccc;
+				border-radius: 50%;
+				margin-right: 5px;
+			}
+			.bg{
+				background: #f00 !important;
+			}
+			.next{
+				width: 25px;
+				height: 60px;
+				overflow: hidden;
+				position: absolute;
+				top: 50%;
+				margin-top: -30px;
+				right: 20px;
+				
+				
+			}
+			.prev{
+				width: 25px;
+				height: 60px;
+				overflow: hidden;
+				position: absolute;
+				top: 50%;
+				margin-top: -30px;
+				left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner" id="banner1">
+		  <div class="warp">	
+			
+		   </div>
+		   <div class="bannerTip" id="bannerTip">
+		   	 <ul>
+		   	 	
+		   	 </ul>
+		   </div>
+		   <div class="next">
+		   	<img src="img/right.jpg"/>
+		   </div>
+		   <div class="prev">
+		   	<img src="img/left.jpg" />
+		   </div>
+		</div>
+	</body>
+</html>
+<script src="utils.js"></script>
+<script type="text/javascript" src="tween2.js" ></script>
+<script>
+    var banner1=document.getElementById('banner1');
+    var warp=utils.getElementsByClassName('warp',banner1)[0];
+    var bannerList=utils.getElementsByClassName('banInner',warp);
+    
+    var listImg=warp.getElementsByTagName('img');
+    var bannerTip=document.getElementById('bannerTip');
+    var bannerTipUl=utils.firstChild(bannerTip);
+    var next=utils.getElementsByClassName('next',banner1)[0];
+    var prev=utils.getElementsByClassName('prev',banner1)[0]
+   var tipLi=bannerTipUl.getElementsByTagName('li');
+    var step=null;
+    var timer=null;
+     //获取数据
+     var jsonDate=null;
+	~function(){
+		
+		var val=null;
+		
+		//ajax 获取数据；
+		var xml=new XMLHttpRequest();
+		xml.open('get','bannerImg.txt',false);
+		xml.onreadystatechange=function(){
+			if(xml.readyState===4&&/^2\d{2}.test(xml.status)$/){
+				val=xml.responseText;
+				jsonDate=utils.jsonParse(val);
+				
+				
+			}
+		}
+		xml.send();
+		
+	}()
+	
+	//绑定数据
+	~function(){
+		var str="";
+		var str2="";
+		
+	   	for(var i=0;i<jsonDate.length;i++){
+//	   		str+='<div class="banInner">';
+//	   	    str+='<a href="javascript:;">';
+//	   	    str+=' <img data-src="'+jsonDate[i]["bannerSrc"]+'" src="img/timg1.gif"/>';
+//	   	    str+='</a>';
+//	   	    str+='</div>';
+	   	    
+	   	    str+='<div class="banInner"><a href="javascript:;"><img data-src="'+jsonDate[i]["bannerSrc"]+'" src="img/timg1.gif"/></a></div>'
+	   	  str2+= i==0?'<li class="bg"></li>':'<li></li>';
+	   	  
+	   	}
+	   	
+	   	str+='<div class="banInner">';
+	   	    str+='<a href="javascript:;">';
+	   	    str+=' <img data-src="'+jsonDate[0]["bannerSrc"]+'" src="img/timg.gif"/>';
+	   	    str+='</a>';
+	   	    str+='</div>'
+	   		warp.innerHTML=str;
+	   		utils.css(warp,"width",(jsonDate.length+1)*1000);
+	   		bannerTipUl.innerHTML=str2;
+	   		
+	   		 
+  
+	   		
+	}()
+	 
+	
+	function lazyLoad(){
+	  	for(var i=0;i<jsonDate.length+1;i++){
+	  		(function(i){
+	  		var oImg=new Image();
+	  			oImg.src=listImg[i].getAttribute('data-src');
+	  			oImg.onload=function(){
+	  		    listImg[i].src=oImg.src;
+	  	        }
+	  		})(i)
+	  		
+	  	}
+	}
+	
+	lazyLoad();
+	
+	
+	//图片轮播；	
+	function bannerMove(){
+		step++;
+		if(step>=5){
+			utils.css(warp,'left',0);
+			step=1;
+		}
+		move(warp,{left:-(step*1000)},500,9);
+	Tip();
+	}
+	timer=window.setInterval(bannerMove,1000);
+	
+	//焦点轮播	
+	function Tip(){
+		for(var i=0;i<tipLi.length;i++){
+			i===step?utils.addClass(tipLi[i],'bg'):utils.removeClass(tipLi[i],'bg');
+			
+		}
+		if(step>=4){
+		 		utils.addClass(tipLi[0],'bg')
+		 	}
+	}
+	
+	//焦点点击移动
+	~function(){
+		for(var i=0;i<tipLi.length;i++){
+			tipLi[i].index=i;
+			
+			tipLi[i].onclick=function(){
+				
+				step=this.index;
+			   Tip()
+				move(warp,{left:-(step*1000)},500,9);
+			}
+		}
+	}()
+	
+	//鼠标移近移出
+	
+	banner1.onmouseover=function(){
+		window.clearInterval(timer);
+	};
+	banner1.onmouseout=function(){
+		timer=window.setInterval(bannerMove,1000);
+	}
+    
+    next.onclick=function(){
+    	
+    	bannerMove();
+    	 
+    	
+    };
+    prev.onclick=function(){
+    	if(step<=0){
+    		step=4;
+    		utils.css(warp,'left',-step*1000);
+    	}
+    	step--;
+    	Tip()
+        move(warp,{left:-(step*1000)},500,9);
+    	
+    }
+   
+</script>

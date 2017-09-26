@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.header li{
+				  	float: left;
+				  	margin-right: 30px;
+			
+		}
+		.list li span{
+			
+			margin-right: 39px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			<ul class="header">
+				<li>序号</li>
+				<li>名称</li>
+				<li>数量</li>
+				<li>价格</li>
+				
+			</ul>
+			<ul style="overflow: hidden;clear: both;" class="list">
+				<li v-for='(ary,index) in list'>
+				
+					<span>{{index+1}}</span>
+					<span>{{ary.name}}</span>
+					<span>{{ary.num}}</span>
+					<span>{{ary.price}}</span>
+					<span><input type="button" value="删除" @click='removeli(ary)'/></span>
+				</li>
+			</ul>
+			<input type="text" v-model='sp'/>
+			<input type="text"  v-model='sl'/>
+			<input type="text" v-model='jg'/>
+			<input type="button" value="添加" @click='add'/>
+			<input type="button" value="删除全部" @click='removeAll' />
+			<input type="button" value='总计' @click='priceAll' />
+			<div v-show='zj'>
+				{{zj}}
+			</div>
+		</div>
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+	new Vue({
+		el:'.app',
+		data:{
+			
+			sp:'',
+			sl:'',
+			jg:'',
+			zj:0,
+			list:[{name:"商品1",num:10,price:90},{name:"商品2",num:12,price:92}]
+		},
+		methods:{
+			
+			removeli(ary){
+				
+				this.list=this.list.filter((el)=>{
+				  return el!=ary;
+				  
+				})
+				this.priceAll();
+			},
+			add(){
+				let addObj={name:this.sp,num:this.sl,price:~~(this.jg)};
+				this.list.push(addObj)
+				this.sp=this.sl=this.jg=''
+				this.priceAll();
+			},
+			removeAll(){
+				this.list=[]
+			},
+			priceAll(){
+				var a=0;
+				this.list.forEach((item,index)=>{
+					   
+					 	
+					 	a+=item.price
+					 	this.zj=a;
+					 
+				
+				})
+			},
+			
+		}
+	})
+</script>

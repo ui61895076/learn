@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript" src="createXHR.js" ></script>
+<script>
+	var xhr=createXHR()//0
+	
+	//关于同步异步
+	
+    xhr.open('get','jsondata.txt',true);//1
+	
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState===4&&/^2\d{2}$/.test(xhr.status)){
+			console.log(xhr.readyState);
+		}
+		if(xhr.readyState===2){
+			var time=xhr.getResponseHeader('Date');//获取响应头部信息
+			console.log(new Date(time).getTime())
+		}
+	}
+	
+	xhr.send(null);
+	//readyState  状态码
+	
+	//0：当前请求没有发送
+	//1：url地址已经打开（发送前的配置已经完成）
+	//2：响应头信息接收
+	//3：内容正在服务器端处理
+	//4：接收返回内容
+	
+	
+</script>

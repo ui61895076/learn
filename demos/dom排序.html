@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+		<li>1</li>
+		<li>2</li>
+		<li>134</li>
+		<li>12</li>
+		<li>121</li>
+		
+		<li>51</li>
+		<li>21</li>
+		<li>13</li>
+		<li>41</li>
+		<li>152</li>
+		<li>15</li>
+		<li>16</li>
+		<li>12</li>
+		<li>17</li>
+		</ul>
+	</body>
+</html>
+<script>
+	var oul=document.getElementById('ul')
+	var aLi=document.getElementsByTagName('li');
+	
+	var ary=listToAry(aLi)
+	
+	
+	ary.sort(function(a,b){
+		return a.innerHTML-b.innerHTML;
+	})
+	var frg=document.createDocumentFragment();
+	for(var i=0;i<ary.length;i++){
+		
+		var oli=document.createElement('li');
+		oli.innerHTML=ary[i].innerHTML;
+		frg.appendChild(oli);
+	}
+	oul.appendChild(frg)
+	
+	function listToAry(ary){
+	var ar=[];
+	try{
+		ar= Array.prototype.slice.call(ary)
+	}catch(e){
+		for(var i=0;i<ary.length;i++){
+			ar[ar.length]=ary[i]
+		}
+		
+	}
+	return ar;
+}
+	
+</script>

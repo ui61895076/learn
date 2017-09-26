@@ -1,0 +1,1 @@
+[{"bannerSrc":"img/gcaq.jpg"},{"bannerSrc":"img/vr.jpg"},{"bannerSrc":"img/mc.jpg"},{"bannerSrc":"img/sy.jpg"}]

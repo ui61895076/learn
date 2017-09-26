@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>CSS3实现360度720度边移动边旋转效果-鸽子户(Gezihu.com)-脚本<a href="/houtai/" target="_blank">编程</a>学习站</title>
+<style>
+ 
+@-webkit-keyframes rotate{
+    from{-webkit-transform:rotate(0deg)}
+    to{-webkit-transform:rotate(360deg)
+     
+    }
+    }
+@-moz-keyframes rotate{
+    from{-moz-transform:rotate(0deg)}
+    to{-moz-transform:rotate(360deg);}
+    }
+@-ms-keyframes rotate{
+    from{-ms-transform:rotate(0deg)}
+    to{-ms-transform:rotate(360deg);}
+    }
+@-o-keyframes rotate{
+    from{-o-transform:rotate(0deg)}
+    to{-o-transform:rotate(360deg);}
+    }
+     
+     
+.a{
+    transition:All 0.8s ease-in-out;
+    -webkit-transition:All 0.4s ease-in-out;
+    -moz-transition:All 0.4s ease-in-out;
+    -o-transition:All 0.4s ease-in-out;
+    animation: 1.5s linear 0s normal none infinite rotate;
+    -webkit-animation:1.5s linear 0s normal none infinite rotate;
+    width:200px;
+    height:200px;
+    background-color:#000000;
+    display:block;
+    margin:100px auto;
+    color:#fff;
+    text-align:center;
+    line-height:200px;
+    font-size:20px;
+    font-weight:bold;
+    border-radius: 50%;
+     
+ 
+}
+.a:hover {
+     
+     
+     transform:rotate(720deg);
+    -webkit-transform:rotate(720deg);
+    -moz-transform:rotate(720deg);
+    -o-transform:rotate(720deg);
+    -ms-transform:rotate(720deg);
+    background:#F60;
+     
+     
+ 
+ 
+}
+ 
+ 
+ 
+.animated{
+    -webkit-animation-duration:1s;
+    animation-duration:1s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+     
+}
+ 
+ 
+@-webkit-keyframes rollIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%) rotate(-720deg);
+    transform: translateX(-100%) rotate(-720deg);
+  }
+ 
+  100% {
+    opacity: 1;
+    background:#C30;
+    -webkit-transform: translateX(0px) rotate(0deg);
+    transform: translateX(0px) rotate(0deg);
+  }
+}
+ 
+@keyframes rollIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-600%) rotate(-180deg);
+    -ms-transform: translateX(-600%) rotate(-120deg);
+    transform: translateX(-600%) rotate(-120deg);
+     
+  }
+ 
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px) rotate(0deg);
+    -ms-transform: translateX(0px) rotate(0deg);
+    transform: translateX(0px) rotate(0deg);
+     
+  }
+}
+ 
+.rollIn {
+  -webkit-animation-name: rollIn;
+  animation-name: rollIn;
+  width:200px;
+    height:200px;
+    background-color:#000000;
+    display:block;
+    margin:100px auto;
+    color:#fff;
+    text-align:center;
+    line-height:200px;
+    font-size:20px;
+    font-weight:bold;
+    border-radius: 50%;
+}
+ 
+</style>
+</head>
+ 
+<body>
+     
+<!--<a class="animated rollIn a">360度旋转</a> -->
+<div class="animated rollIn">360度旋转</div>
+ 
+</body>
+</html>
+<script>
+var a={"c":1}
+	function aa(a){
+		//a=[1,2];
+		a.c=2
+		alert(a.c)
+	}
+	aa(a)
+	alert(window.a.c)
+</script>
+
+
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"教泽信息","bdMini":"2","bdMiniList":false,"bdPic":"http://www.jiaozexinxi.com/img/logo.png","bdStyle":"2","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+

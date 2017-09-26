@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点击返回顶部带运动</title>
+		<style>
+		body{
+			height: 2000px;
+		}
+			#box{
+				width: 50px;
+				height: 50px;
+				background: #CC3300;
+				position: fixed;
+				bottom: 100px;
+				right: 100px;
+				display: none;
+				
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+	window.onload=function(){
+		var box=document.getElementById('box');
+		
+		window.onscroll=scrolls;
+		function scrolls(){
+			
+			
+			if(utils.getWin('scrollTop')>500){
+			   box.style.display='block';
+			}
+			if(utils.getWin('scrollTop')==0){
+				box.style.display='none';
+			}
+			
+		}
+		var timer1=null;
+			
+		box.onclick=function(){
+			window.onscroll=null
+			this.style.display='none';
+			var dis=utils.getWin('scrollTop');
+			clearInterval(timer1);
+			timer1=setInterval(function(){
+				dis-=80;
+				utils.getWin('scrollTop',dis);
+				if(dis<=0){
+				window.onscroll=scrolls;
+					dis=0;
+					clearInterval(timer1);
+					
+					
+				}
+				console.log('ok')
+				console.log(dis)
+			},10)
+			
+			
+				
+				
+				
+		}
+		
+		
+		
+	}
+</script>

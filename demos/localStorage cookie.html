@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+//	localStorage.setItem('a',10);
+//	localStorage.setItem('b','ad');
+//	console.log(localStorage.getItem('a'));
+//	localStorage.removeItem('a');
+//var obj={'a':10,'sex':'man'}
+//localStorage.setItem('o',JSON.stringify(obj))
+//console.log(JSON.parse(localStorage.o))
+//sessionStorage.setItem('see',1111111111)//
+//var _date=new Date();
+//console.log(_date.setDate(_date.getDate()+20));
+//console.log(_date.toGMTString());
+
+
+
+
+
+function setCookie(options){
+	var _default={
+		name:'',
+		value:null,
+		expires:24,//天
+		path:'/',
+		domain:''
+	}
+	
+	for(key in options){
+		if(options.hasOwnProperty(key)){
+			_default[key]=options[key];
+		}
+		
+	}
+	var _date=new Date();
+	_date.setDate(_date.getDate()+_default.expires);
+	
+	document.cookie=_default.name+'='+escape(_default.value)+';expires='+_date.toGMTString()+';path='+_default.path
+}
+setCookie({name:' abc',value:"ooos",expires:2});
+
+function getCookie(options){
+	var _default={
+		name:'',
+		value:null,
+		path:'/'		
+	}
+	for(key in options){
+		if(options.hasOwnProperty(key)){
+			_default[key]=options[key];
+		}
+		
+	}
+		 var ary=document.cookie.match(new RegExp(_default.name+"=([^;]*)(;|$)"));
+		 
+	  if(ary!=null){
+	  	
+	  	return unescape(ary[1])
+	  }else{
+	  	return null
+	  }
+		
+	
+	
+}
+
+function removeCookie(options){
+	var _default={
+		name:'',
+		
+		expires:24,//天
+		
+	}
+	
+	for(key in options){
+		if(options.hasOwnProperty(key)){
+			_default[key]=options[key];
+		}
+		
+	}
+	var _date=new Date();
+	_date.setDate(_date.getDate()+_default.expires);
+	
+	document.cookie=_default.name+'='+_default.value+';expires='+_date.toGMTString()+';path='+_default.path
+	setCookie(_default)
+}
+
+
+setCookie({name:'aa',value:123})
+setCookie({name:'aa1',value:"234pfg"})
+removeCookie({name:'aa1',expires:-1})
+removeCookie({name:'a',expires:-1})
+removeCookie({name:'aa',expires:-1})
+setCookie({name:'aa',value:'我是中国人'})
+
+console.log(getCookie({name:'aa'}))
+</script>,

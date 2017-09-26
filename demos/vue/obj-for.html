@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="cc">
+			<li v-for='(val,key) in obj1'>
+				{{key}}
+			</li>
+		</ul>
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+//v-for 对象内容的时候，如果只写o ，那么他返回的数据是对应的值，
+//2.0中如果是写出小括号的话（val,key ）的顺序是不要错的，val在前，key在后
+//1.0中则与上面相反
+	new Vue({
+		el:'#cc',
+		data:{
+			obj1:{name:'yhb',age:11,sex:'man'}
+		}
+	})
+</script>

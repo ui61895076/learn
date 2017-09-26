@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+    var oDiv=document.getElementById('box');
+	var maxLeft= utils.getWin('clientWidth')-oDiv.offsetWidth;
+    var timer=null;
+    var step=10;
+    timer=window.setInterval(function(){
+    	var curLeft=utils.getCss(oDiv,'left');   
+    	curLeft+=step;
+    	if(curLeft+step>=maxLeft){//判断边界，加上步长；    		
+    		 utils.css(oDiv,'left',maxLeft);
+    		window.clearInterval(timer);
+    		 
+    	}else{
+    		utils.css(oDiv,'left',curLeft)
+    	}
+    	
+        
+    },10)
+</script>

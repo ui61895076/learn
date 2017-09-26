@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				
+			}
+			table{
+				width: 400px;
+			}
+			table thead  tr{
+				background: #FF6600;
+				color: #fff;
+				
+			}
+			table thead  tr th{
+				text-align: center;
+			}
+			table tbody tr td{
+				text-align: center;
+			}
+			
+			.trbg{
+				background:#ccc;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div >
+			<h1>sd</h1>
+			<h2>fds</h2>
+			<ul id="ul">
+				<li onclick="location.href='tel:15911189007'" >11</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+				<li id="k">112</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+				<li>112</li>
+			</ul>
+		</div>
+		<table cellpadding="0" cellspacing="0" id="table">
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>年纪</th>
+				<th>性别</th>
+				<th>等级</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	</body>
+	
+	
+</html>
+<script>
+//var obj={
+//	name:10,
+//	fn:function(){
+//		var i=10;
+//		return function(num){
+//			i+=num
+//			console.log(++i)
+//		}
+//	}
+//}
+//
+////obj.fn()(12)
+////obj.fn()(14)
+//var r=obj.fn();
+//r(10)
+//r(12)
+//var f=obj.fn();//当函数执行的时候就开启了一个新的作用域，作用域执行完后，会看这个作用域内容的内存地址是否被外部所调用，如果没有，就自动销毁，如果有则不销毁
+//f(10)
+//f(12)//
+
+
+
+
+//document.onclick=(function(){
+//	var i=0;
+//	for(var j=0;j<i;j++){
+//		console.log(j)
+//	}
+//	return function(){
+//		console.log(i++)
+//	}
+//})();
+
+
+
+//function Fn1(a,b){
+//	this.a=a;
+//	this.b=b;
+//	
+//	
+//}
+//
+//Fn1.prototype.say=(function(){
+//	return function(){
+//		this.a++;
+//		console.log(this.a)
+//	}
+//	
+//})()
+//
+//var p1=new Fn1(1)
+//var p2=new Fn1(2)
+//p1.a=6;
+//
+//console.log(p2.say())
+//console.log(p2.a)
+//console.log(p1.say())
+//console.log(p1.a)
+//console.log(p1.constructor===p2.constructor)
+
+
+//var arr=[1,2,3,4,5]
+//var a=arr.slice('1px','2px');
+//console.log(a)
+
+//function a(a,b){
+//	
+//	console.log(b);
+//}
+//a(1)
+
+//var arr=[1,2,3,4,5,6,7,8,9];
+//Array.prototype.mySlice=function(n,m){
+//	var newary=[];
+//	
+//		if(arguments.length==0){
+//			return this
+//		}
+//		if(arguments.length==1){
+//			if(isNaN(n)||isNaN(m)||n>m||(n>this.length&&m>this.length)){
+//		           return
+//	         }
+//		  var k=n;
+//		  for(var i=0;i<this.length-n;i++){
+//			
+//			  newary[i]=this[k];
+//			  k++;
+//			
+//		   }
+//		return  newary;
+//	   }
+//		if(arguments.length==2){
+//			if(isNaN(n)||isNaN(m)||n>m||(n>this.length&&m>this.length)){
+//		      return
+//	         }
+//			n<0?n=this.length+n:n=n;
+//			
+//			m<0?m=this.length+m:m=m;
+//			
+//			
+//			m>this.length?m=this.length:m=m;
+//			
+//			  var k=n;
+//			
+//			for(var i=0;i<m-n;i++){
+//				newary[i]=this[k]
+//				k++;
+//			}
+//			return newary;
+//		};
+//		
+//	
+//	
+//	
+//	
+//	
+//}
+//console.log(arr.mySlice())
+
+
+
+//(5).plus(10).reduce(2)
+
+//var n= 20
+//
+//Number.prototype.plus=function(num){
+//	var a=this;
+//	a+=num
+//	console.log(this)
+//	return a;
+//}
+//Number.prototype.reduce=function(num){
+//	var a=this;
+//	a-=num;
+//	return a;
+//}
+//console.log(n.plus(10).reduce(2))
+//
+//
+//
+//var obj1={a:1,b:2};
+//var obj2={c:3,d:4};
+//console.log(obj2)
+//var obj2=Object.create(obj1)
+//console.log(obj2)
+//
+//
+//function A(){
+//	this.a=1;
+//	this.b=2;
+//	
+//}
+//A.prototype.geta=function(){
+//	console.log(this.a);
+//	
+//}
+//function B(){
+//	A.call(this);
+//}
+// B.prototype=Object.create(A.prototype)
+// B.prototype.getc=function(){}
+//
+// 
+// 
+// var n=new B();
+//console.log( A.prototype)
+//console.log( B.prototype)
+
+
+//function A(){
+//	this.a=1;
+//}
+//A.prototype.geta=function(){}
+//function B(){
+//	this.a=2
+//}
+//B.prototype=new A();
+//function C(){
+//	this.c=1;
+//	
+//}
+//C.prototype=new B();
+//var c=new C()
+//console.log(c.a)
+
+
+
+//function objectCreate(o){
+//	function Fn(){};
+//	Fn.prototype=o;
+//	return new Fn();
+//	
+//}///模拟 Object.create 这个方法，此方法在IE6-8中不兼容；
+//
+//function D(){
+//	this.a=1;
+//	this.gety=function(){console.log(2)}
+//}
+//D.prototype.getc=function(){console.log(6)}
+//
+//function F(){
+//	D.call(this);
+//}
+//
+//F.prototype=objectCreate(D.prototype);
+//F.prototype.getd=function(){console.log(5)}
+//
+//var n=new F();
+//
+//console.log(n.gety())
+// document.a=0;
+//document.onclick=(function(){
+//	return function (){
+//		
+//		console.log(this.a++)
+//		console.log(this)
+//		
+//	}
+//})()
+//
+//var a=b=10;
+//(function(){
+//	var a=b=20;
+//})()
+//console.log(b)   //20
+//
+//var a=888;
+//var n=1+(++a)
+//console.log(n)//
+
+
+//var i=0,j=0;
+//for(;i<10,j<6;i++,j++){//for循环当中如果判断条件里面出现了两个，并且是，分隔则执行最后一个 
+//	k=i+j;
+//}
+//console.log(k)
+
+//
+//var x=1;
+//function fn(n){
+//	n=n+1
+//	console.log(n)
+//}
+//y=fn(x);
+//console.log(y)
+//miao-wei-ke-tang 
+
+//var str='miao-wei-ke-tang';
+//var ary=str.split('');
+//var ind=ary.indexOf();
+//var arr=[];
+//
+//for(var i=0;i<ary.length;i++){
+//	if(ary.indexOf('-')>-1){
+//		
+//		ary.splice(ary.indexOf('-')+1,1,ary[ary.indexOf('-')+1].toUpperCase())
+//		ary.splice(ary.indexOf('-'),1);
+//		i--;
+//	}
+//	
+//	ary[0]=ary[0].toUpperCase();
+//	
+//}
+//
+//
+//  console.log(ary.join(''))
+//  
+//  var a=b=10;
+//  (function(){
+//   	var a=b=20;
+//   	console.log(a)// var a=b ,b=20;
+// })()
+// console.log(a)
+// console.log(a,b)
+//
+
+   
+   
+// var a=10,b=20,c=30,d=20; 
+// n=++a+(b++)+(c)+b+(c++)+d++
+// console.log(++d)
+// 
+//
+// 
+// console.log(n)
+
+
+
+ 
+// 
+// function unquie(arr){
+// 	var obj={};
+// 	
+// 	for(var i=0;i<arr.length;i++){
+// 	   var cur=arr[i];
+// 	   if(obj[cur]==cur){
+// 	   	arr[i]=arr[arr.length-1];
+// 	   	arr.length--;
+// 	   	i--
+// 	   }else{
+// 	   	obj[cur]=cur
+// 	   }
+// 	}
+// 	obj=null;
+// 	return arr;
+// }
+// 
+
+//var ary=[1,2,3,4,1,23,4,2,123,4,1,23,1,1];
+//
+// function bubbleSort(ary){
+// 	var flag=false;
+// 	var temp=null;
+// 	for(var i=0;i<ary.length-1;i++){
+// 		for(var j=0;j<ary.length-1-i;j++){
+// 			
+// 			if(ary[j]>ary[j+1]){
+// 				temp=ary[j+1];
+// 				ary[j+1]=ary[j];
+// 				ary[j]=temp;
+// 				flag=true;
+// 			}
+// 		}
+// 		if(flag){
+// 			flag=false;
+// 		}else{
+// 			break;
+// 		}
+// 	}
+// 	return ary;
+// }
+// 
+// console.log(bubbleSort(ary))
+
+
+
+
+//function quickSort(ary){
+//	if(ary.length<=1){
+//		return ary;
+//	}
+//	var indexPos=Math.floor(ary.length/2);
+//	
+//	var pointValue=ary.splice(indexPos,1)[0];
+//	
+//	var left=[];
+//	var right=[];
+//	
+//	for(var i=0;i<ary.length;i++){
+//		if(ary[i]<pointValue){
+//			left.push(ary[i]);
+//		}else{
+//			right.push(ary[i]);
+//		}
+//		
+//	}
+//	return quickSort(left).concat(pointValue,quickSort(right))
+//}
+//console.log(quickSort(ary))
+
+//
+//function inesertSort(ary){
+//	var arr1=[];
+//      arr1.push(ary[0])
+//	for(var i=1;i<ary.length;i++){
+//          
+//		
+//		for(var j=arr1.length-1;j>=0;){
+//			
+//			if(ary[i]<arr1[j]){
+//			    j--;
+//				if(j===0){
+//					arr1.unshift(ary[i])
+//				}
+//				
+//			}else{
+//				arr1.splice(j+1,0,ary[i]);
+//				j=-1;
+//			}
+//		}
+//		
+//	}
+//	return arr1
+//}
+//
+//console.log(inesertSort(ary))
+
+
+
+
+//var oDiv=document.getElementById('k');
+
+/*
+ * 
+ */
+
+//console.log(getChildern(oDiv,'ul'));
+//function getChildern(ele,tagName){
+//	var arr=[];
+//	var nodes=ele.childNodes;
+//	
+//	for(var i=0;i<nodes.length;i++){
+//		if(tagName){
+//			if (nodes[i].nodeType==1&&(nodes[i].nodeName).toLowerCase()==tagName.toLowerCase()){
+//			arr.push(nodes[i])
+//		    }
+//		}else{
+//			if(nodes[i].nodeType==1){
+//			arr.push(nodes[i])
+//		    }
+//			
+//		}
+//		 
+//	}
+//	return arr;
+//	
+//}
+
+
+//var oLi=document.getElementById('k');
+////console.log(document.getElementById('ul').childNodes)
+//
+////console.log(oLi.parentNode);
+//function prev(ele){
+//	var pre=ele.previousSibling;
+//
+//	while(pre.nodeType!=1){
+//		pre=pre.previousSibling;
+//	}
+//	return pre;
+//}
+//
+//
+//function nextSib(ele){
+//	var next=ele.nextSibling;
+//	while(next.nodeType!=1){
+//		next=next.nextSibling;
+//	}
+//	return next;
+//}
+//
+////nextsibling(oLi).style.background='green';
+//
+//function preAll(ele){
+//	var pAllSiblings=[];
+//	var pre=ele.previousSibling;
+//	while(pre){
+//		if(pre.nodeType!=1){
+//			
+//			pre=pre.previousSibling;
+//		}else{
+//			pAllSiblings.unshift(pre);
+//			pre=pre.previousSibling;
+//		}
+//		
+//	}
+//	return pAllSiblings
+//}
+//
+//
+//function nextAll(ele){
+//	var nAllSiblings=[];
+//	var next=ele.nextSibling;
+//	while(next){
+//		if(next.nodeType!=1){
+//			
+//			next=next.nextSibling;
+//		}else{
+//			nAllSiblings.push(next);
+//			next=next.nextSibling;
+//		}
+//		
+//	}
+//	return nAllSiblings
+//}
+//
+//console.log(nextAll(oLi));
+//
+//
+//
+//var oH1=document.createElement('h1');
+//var oH2=document.createElement('h2');
+//
+//oH1.innerHTML='我是新添加进来的';
+////document.body.appendChild(oH1);
+//
+//
+//
+//oLi.parentNode.insertBefore(oH1,oLi);
+////oH1.parentNode.replaceChild(oH2,oH1)
+//var cloH1=oH1.cloneNode();
+//
+//document.body.appendChild(cloH1)
+//
+//cloH1.parentNode.removeChild(cloH1);
+////oLi.parentNode.appendChild(oH1)
+
+//var ul=document.getElementById('ul');
+//var aLi=ul.getElementsByTagName('li');
+//
+//console.log(lisToArr(aLi));
+//function lisToArr(nodeList){
+//	var ary=[];
+//	try{
+//		ary=Array.prototype.slice.call(nodeList);
+//	} catch (e) {
+//		
+//		for(var i=0;i<nodeList.length;i++){
+//			ary[ary.length] = nodeList[i];
+//		}
+//	}
+//	return ary;
+//	
+//	
+//}
+
+//var ary=[1,2,4,1,45,1,32,5,32,4,4,23432,1213,3];
+
+//1
+
+
+//console.log(Math.max.apply(null,ary));
+
+//2
+
+//ary.sort(function(a,b){
+//	return a-b;
+//})
+//console.log(ary[ary.length-1])
+
+//3
+//var max=0;
+//
+//for(var i=0;i<ary.length;i++){
+//	var cur=ary[i];
+//	cur>max?max=cur:null;
+//	
+//}
+//console.log(max);
+
+////4
+//var str=ary.toString();
+//console.log(eval('Math.max('+str+')'));
+//function fn(){
+//	console.log(this.nodeName);
+//}
+//document.onclick=function(){
+//	//console.log(this);
+//	//fn(console.log(this))
+//	fn.call(this)
+//}
+
+//var oul=document.getElementById('ul')
+//var aLi=oul.getElementsByTagName('li')
+//var data=null;
+//var oTable=document.getElementById('table');
+//var oThead=oTable.tHead;
+//var theadCells=oThead.rows[0].cells;
+//var oTbody=oTable.tBodies[0];
+//var oTbody_tr=oTbody.rows;
+//
+//
+//
+//
+//
+//var xml=new XMLHttpRequest();
+//	xml.open('GET','jsondata.txt',false);
+//	xml.onreadystatechange=function(){
+//		if(xml.readyState==4&&xml.status==200){
+//			var val=xml.responseText;
+//			data=JSON.parse(val)
+//			console.log(data)
+//		};
+//	};
+//	xml.send(null);
+//function bindjson(data){
+//	for(var i=0;i<data.length;i++){
+//		
+//		var frg=document.createDocumentFragment();
+//		var add_tr=document.createElement('tr');
+//		
+//		for( var key in data[i]){
+//			var add_td=document.createElement('td');
+//			
+//			add_tr.appendChild(add_td);
+//			if(key=='sex'){
+//				add_td.innerHTML=data[i][key]==0?'男':'女'
+//			}else{
+//				add_td.innerHTML=data[i][key];
+//			}
+//			add_tr.className= i%2==0?'trbg':'';
+//			frg.appendChild(add_tr);
+//		};
+//		oTbody.appendChild(frg);
+//		
+//	}
+//	
+//	
+//
+//	
+//
+//	
+//}
+//
+//
+//bindjson(data);
+//for(var i=0;i<theadCells.length;i++){
+//	theadCells[i].index=i;
+//	theadCells[i].onclick=function(){
+//		
+//	   data.sort(function(a,b){
+//		  return a.age-b.age;
+//	       })
+//		oTbody.innerHTML='';
+//		bindjson(data);
+//		
+//	}
+//}
+//
+
+
+
+//function upSort(ary){
+//	
+//	
+//	ary.sort(function(a,b){
+//		return a.cells[0].innerHTML.localeCompare(b.cells[0].innerHTML)
+//	})
+//	
+//	
+//}
+//
+//console.log(listToAry(oTbody_tr) instanceof Array)
+////console.log(listToAry(aLi))
+//function listToAry(ary){
+//	var ar=[];
+//	try{
+//		ar= Array.prototype.slice.call(ary)
+//	}catch(e){
+//		for(var i=0;i<ary.length;i++){
+//			ar[ar.length]=ary[i]
+//		}
+//		
+//	}
+//	return ar;
+//}
+
+
+//var nowDate= new Date();
+//var newDate= new Date('2017/04/13/ 16:52')///
+//
+//console.log(newDate.getTime()-nowDate.getTime())
+
+//function fn(){
+//	var n=1;
+//	return function(){
+//		console.log(++n);
+//	}
+//}
+//
+//var f=fn();
+//console.log(f());
+//console.log(f())
+//var c=fn();
+//console.log(c())
+
+//var num=12,obj={}
+//obj.num=10;
+//obj.fn=(function(){
+//	num=num+4;
+//	this.num+=2;
+//	console.log(num)
+//	var num=14;
+//	
+//	return function(){
+//		this.num+=4;
+//		num=num+2;
+//		
+//	}
+//})();
+//var fn=obj.fn;
+//fn();
+//obj.fn();
+
+//var reg=/^1\d{10}$/;
+//var reg2=new RegExp('^1\\d{10}$');
+//var reg=new RegExp('^(\\d|\\-)[0-9a-zA-Z]+$')
+//var reg=/^([0-9a-zA-Z_])\d$/;
+//var reg3=/(^1[8-9]$)|(^[2-4][0-9]$)|(^5[0-5]$)/
+//var reg=/^[a-z0-9]{6,9}$/
+//var reg=/^\d+$/;
+//var reg2=/^[^!@#$]$/
+//var reg2=/^[18191]$/
+
+/*var reg2=/^[0-9a-zA-Z]+@[0-9a-zA-Z]+(\.[0-9a-zA-Z]+){1,2}$/;
+
+console.log(reg2.test('61895076@qq..com.cn'))*/
+
+
+//var reg=/[a-z]+?/g
+////console.log(reg.test('123134311a'))
+//
+//var str='12342111a1ssdfsaf';
+//console.log(str.match(reg))
+////console.log(reg.exec(str))
+// function Foo(){
+// 	getName=function(){console.log(1)};
+// 	console.log(this)
+// 	this.getName=function(){console.log('1')}
+// 	return this;
+// }
+// Foo.getName=function(){console.log(2) };
+// Foo.prototype.getName=function(){console.log(3)};
+// var getName=function(){console.log(4)};
+// function getName(){console.log(5)};
+//// Foo.getName();
+//// getName()
+////Foo()
+// //Foo().getName()
+// //getName()
+// //new Foo.getName()
+////new Foo().getName()
+////new new Foo().getName();
+//
+//var a=new Foo()
+//console.log(a.getName())
+
+
+//function a(){
+//	console.log(1);
+//	
+//}
+//a.dd='n'
+//console.log(a.dd)
+
+
+//var str='    we are family     ';
+//var reg=/[^a-z]+\s[^a-z]+/g;
+//str=str.replace(reg,function(){
+//	return ''
+//});
+//console.log(str.length);
+
+//var c={a:1,b:2}
+//function fn1(){
+//	c.a=3
+//	return function(n){
+//		console.log(c.a=n)
+//	}
+//}
+//
+//var f=fn1();
+//var h=fn1();
+//console.log(f==h)
+
+//var str=' s      safd fds fd f    ';
+//var reg=/\s+/g;
+//var str='sdf afd fdsf fds fds ';
+//var reg=/df/g
+//var str= '2015-09-06 17:30:00';
+//var reg=/\d+/g
+//var str2='{0}年{1}月{2}日{3}时{4}分{5}秒';
+//var reg2=/{(\d+)}/g;
+//str2=str2.replace(reg2,function(){
+//	console.log(arguments);
+//	return 1
+//})
+//console.log(str2)
+//var reg=/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/g
+//var ary=[];
+//str=str.replace(reg,function(){
+//	console.log(arguments)
+//	ary.push(arguments[0]);
+//	console.log(ary)
+//	 return ' '
+//})
+//console.log(str)
+
+//(function(){
+//	var obj={a:1,b:2}
+//	return obj.a
+//})()
+//console.log(obj)
+
+//var cc=(function(){
+//	function c(){
+//		console.log('s')
+//	}
+//	var obj={a:1,b:2,c:c}
+//	return obj;
+//})()
+//console.log(cc.c())
+
+//(function(){
+//	function a(){
+//		console.log(1)
+//	}
+//	a();
+//})()
+
+//var val1=0,val2=0,val3=0;
+//for(var i=1;i<=3;i++){
+//	var i2=i;
+//	(function(){
+//		var i3=i;
+//		setTimeout(function(){
+//			val1+=i;
+//			val2+=i2;
+//			val3+=i3;
+//			console.log(i)
+//		},1)
+//	})()
+//}
+//setTimeout(function(){
+//	console.log(val1,val2,val3)
+//},100)
+//
+//function A(){
+//var x=200;
+//var y=400;
+//this.x=100;
+//this.y=100
+//}
+//function B(){
+//var x=100;
+//var y=1000;
+//this.x=100;
+//}
+//A.prototype.getX =function(){} ;
+//B.prototype=new A();
+//var a = new A();
+//var b=new B();
+//console.log(a.prototype.x)
+//console.log(b.__proto__.y)
+//console.log(b.y)
+
+//function Foo(){
+//	getName=function(){console.log(1)}
+//	return this;
+//}
+//Foo.getName=function(){console.log(2)}
+//Foo.prototype.getName=function(){
+//	console.log(3)
+//}
+//
+//
+//
+//var getName=function (){console.log(4)}
+//function getName(){
+//	console.log(5)
+//}
+//
+////Foo.getName();//2
+////getName();//4
+////getName();//4
+//Foo().getName();//1
+//window.getName()
+//
+////getName();//1
+////new Foo.getName()//2
+document.body.onclick=function(){
+	console.log(arguments)
+}
+</script>

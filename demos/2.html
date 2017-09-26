@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>88</li>
+			<li>12</li>
+			<li>34</li>
+			<li>54</li>
+			<li>65</li>
+			<li>76</li>
+			<li>87</li>
+			<li>838</li>
+			
+		</ul>
+	</body>
+</html>
+<script>
+	var oul=document.getElementById('ul');
+	var aLi=oul.getElementsByTagName('li');
+	
+	var aryList=listToArr(aLi);
+	console.log(aryList)
+	aryList.sort(function(a,b){
+		return parseFloat(a.innerHTML)-parseFloat(b.innerHTML)
+	})
+	
+	var frg=document.createDocumentFragment()
+	for(var i=0;i<aryList.length;i++){
+		
+		frg.appendChild(aryList[i]);
+	}
+	
+	oul.appendChild(frg)
+	frg=null;
+	function listToArr(lists){
+		var ary=[];
+		try{
+			ary=Array.prototype.slice.call(lists);
+		}catch(e){
+			for(var i=0;i<lists.length;i++){
+				ary[ary.length]=lists[i]
+			}
+		}
+		return ary;
+	}
+	
+</script>

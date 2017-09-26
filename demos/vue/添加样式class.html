@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<style>
+		.bg{
+			width:100px;
+			height: 100px;
+			background: #000;
+		}
+		.c{
+			width:100px;
+			height: 100px;
+			background: #2E8B57;
+		}
+	</style>
+	</head>
+	<body>
+		<div class="box">
+			<div :class="{bg:flag,c:flag}">1</div>
+			<div :class="[b]">2</div>
+		</div>
+		
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+	new Vue({
+		el:".box",
+		data:{
+			flag:1,
+			b:"bg"
+		}
+	})
+</script>

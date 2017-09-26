@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script type="text/javascript" src="animate.min.js" ></script>
+
+<script>
+//  var oDiv=document.getElementById('box');
+//  function Linear(t,d,b,c){
+//  	return t/d*c+b;
+//  }
+//  var targetT=600;
+//  	var targetL=1000;
+//  	var beginL=utils.css(oDiv,'left');
+//  	var beginT=utils.css(oDiv,'top')
+//  	var changeT=targetT-beginT;
+//  	var changeL=targetL-beginL;
+//  	var duration=2000;
+//  	var time=0;
+//  	var beginL=utils.css(oDiv,'left');
+//  	var beginT=utils.css(oDiv,'top')
+//  	
+//  function move(){
+//  	
+//  	time+=10;
+//  	if(time>=duration){
+//  		window.clearInterval(oDiv.timer);
+//  		utils.css(oDiv,{
+//  			left:targetL,
+//  			top:targetT
+//  		})
+//  	}
+//  	console.log(1)
+//  	utils.css(oDiv,{
+//  		left:Linear(time,duration,beginL,changeL),
+//  		top:Linear(time,duration,beginT,changeT)
+//  	})
+//  	
+//  	
+//  }
+//	
+//	oDiv.timer=window.setInterval(move,10);
+
+var oDiv=document.getElementById('box');
+	move(oDiv,{
+		left:800,
+		top:600,
+		opacity:0.5
+	},1000,['Bounce','easeOut'],function(){
+		utils.css(this,'background','green')
+	})
+</script>

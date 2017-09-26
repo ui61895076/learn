@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<input type="button"  value="点击" id="int" v-on:click="fn('2')"/>-->
+		<input type="button"  value="点击" id="int" @click="fn($event,'2')"/>
+	</body>
+</html>
+<script src="vue1.js"></script>
+<script>
+//总结：点击事件有两种写法v-on;@替代v-on,
+//如果传了e,那么必须fn($event)
+	new Vue({
+		el:'#int',
+		data:{
+			msg:'你点击了我'
+		},
+		methods:{//这里面写方法，
+			fn(e,s){//es6的写法
+				console.log(this.msg+s+e)
+			}
+		}
+	})
+</script>

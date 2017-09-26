@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 400px;
+				height: 400px;
+				background: #008000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box"></div>
+	</body>
+</html>
+<script>
+
+//这样写只是解决了，不同浏览器的兼容问题，但是addEventListener与attachEvent的本质区别没有解决；
+//本质区别：1，this的指向问题；2，fn的重复问题；3，绑定的顺序问题；这三个问题均属attachEvent的问题；
+//第一步先解决this的指向问题；
+var box=document.getElementById('box')
+	function bind(curEle,evenType,evenFn){
+		if('addEventListener' in window){
+			curEle.addEventListener(evenType,evenFn,false);
+			return ;
+		}//3个问题都是出现在attachEvent中的；
+	
+		//curEle.attachEvent('on'+evenType,evenFn.call(curEle));这样.call的方法可以将this的指向改成curEle,但是写法不对，这样是运行后的结果返回给了点击事件；
+//		curEle.attachEvent('on'+evenType,function(){
+//			evenFn.call(curEle);
+//		});//这样写解决了，点击后才执行方法，但是这是个匿名的函数；在解除绑定的时候无法找到对应的，fn 的地址是两个不同的；
+       var temp=function(){
+       	evenFn.call(curEle);
+       };
+       temp.photo=evenFn;
+       if(!curEle['mybind'+evenType]){
+          curEle['mybind'+evenType]=[];	
+       }
+       var ary=curEle['mybind'+evenType];
+       for(var i=0;i<ary.length;i++){
+       	    if(ary[i].photo===evenFn){
+       	    	return;
+       	    }
+       }
+       ary.push(temp);
+       for(var i=0;i<ary.length;i++){
+       	  if(ary[i].photo===evenFn){
+       	  	curEle.attachEvent('on'+evenType,ary[i]);
+       	  }
+       }
+       
+       
+	}
+	
+	function unBind(curEle,evenType,evenFn){
+		if('removeEventListener' in window){
+			curEle.removeEventListener(evenType,evenFn,false);
+			return;
+		}
+		var ary=curEle['mybind'+evenType];
+		
+		 for(var i=0;i<ary.length;i++){
+       	  if(ary[i].photo===evenFn){
+       	  	curEle.detachEvent('on'+evenType,ary[i]);
+       	  }
+       }
+		
+	}
+	///以上的bind  unBind 方法实现了，绑定 取消绑定的兼容性及this 的指向问题，以及重复的问题；但是attachEvent的顺序问题没有解决；
+	
+	//顺序问题是出现在浏览器自带的事件池中，我们无法修改，只能自己模拟一个事件池进行相应的操作；
+	
+    function on(curEle,evenType,evenFn){
+    	if(!curEle['mybind'+evenType]){
+    		curEle['mybind'+evenType]=[];
+    	}
+    	var ary=curEle['mybind'+evenType];
+    	for(var i=0;i<ary.length;i++){
+    		if(ary[i]===evenFn){
+    			return;
+    		}
+    	}
+    	ary.push(evenFn);
+    	bind(curEle,evenType,run)
+    }//模拟事件池，在里面添加方法
+    
+    function off(curEle,evenType,evenFn){
+    	var ary=curEle['mybind'+evenType];
+    	if(!ary){
+    		return;
+    	}
+    	
+    	for(var i=0;i<ary.length;i++){
+    		if(ary[i]===evenFn){
+    			ary.splice(i,1);//off 后数组长度改变了，对下面run方法中的ary.length长度产生了影响；不能用i--,只能ary[i]=null;让数组的长度保持不变；
+    		}
+    	}
+    		
+    }//移除模拟事件迟中的方法
+    
+    function run(e){
+    	e=e||window.event;
+    	e.target=e.target||e.srcElement;
+    	
+    	var ary=e.target['mybind'+e.type];
+    
+    	for(var i=0;i<ary.length;i++){
+    		
+    			ary[i].call(this,e)//长度变化了，索引没有变，导致了塌陷
+    		
+    		
+    	}
+    		//console.log('length'+ary.length)
+    }
+    
+	function fn1(){
+		console.log(1)
+	}
+	function fn2(){
+		console.log(2)
+	}
+	function fn3(){
+		console.log(3)
+	}
+	var n=0;
+	
+	function fn4(){
+	
+		if(n===2){
+			off(box,'click',fn1);
+			off(box,'click',fn2);
+			off(box,'click',fn3);
+			
+		}
+		n++
+	}
+	function fn5(){
+		console.log(5)
+	}
+	function fn6(){
+		console.log(6)
+	}
+	function fn7(){
+		console.log(7)
+	}
+	function fn8(){
+		console.log(8)
+	}
+	function fn9(){
+		console.log(9)
+	}
+
+	
+	
+	
+	on(box,'click',fn1)
+	on(box,'click',fn2)
+	on(box,'click',fn3)
+	on(box,'click',fn4)
+	on(box,'click',fn5)
+    on(box,'click',fn6)
+    on(box,'click',fn7)
+    on(box,'click',fn8)
+    on(box,'click',fn9)
+</script>

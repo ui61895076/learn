@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			.box{
+				width: 200px;
+				height: 200px;
+				background: #ADD8E6;
+				position: absolute;
+				left: 0;
+				top: 0;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box"></div>
+	</body>
+</html>
+<script type="text/javascript" src="myEvent.js" ></script>
+<script>
+	var box=document.getElementById('box');
+    myBind.on(box,'mousedown',down);
+    myBind.on(box,'mousedown',clearT);
+    function clearT(){
+    	window.clearInterval(this.fly);
+    	window.clearInterval(this.drap);
+    }
+	function down(e){
+		var _this=this;
+		e=e||window.event;
+		this.stX=e.clientX-this.offsetLeft;
+		this.stY=e.clientY-this.offsetTop;
+		this.MOVE=function(e){
+			move.call(_this,e);
+		}
+		this.UP=function(e){
+			up.call(_this,e);
+		}
+		myBind.on(document,'mousemove',this.MOVE);
+		myBind.on(document,'mouseup',this.UP);
+		
+		
+		
+	}
+	
+	function move(e){
+		e=e||window.event;
+		var mX=e.clientX-this.stX;
+		var mY=e.clientY-this.stY;
+		var minX=0;
+		var minY=0
+		var maxX=(document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+		var maxY=(document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+		mX<=minX?mX=0:(mX>=maxX?mX=maxX:null)
+		mY<=minY?mY=0:(mY>=maxY?mY=maxY:null)
+		this.style.left=mX+'px';
+		this.style.top=mY+'px';
+		 if(!this.pre){
+			this.pre=this.offsetLeft;
+		}else{
+			this.speed=this.offsetLeft-this.pre;
+			this.pre=this.offsetLeft;
+		}
+	}
+	function up(){
+	    myBind.off(document,'mousemove',this.MOVE);
+        myBind.off(document,'mouseup',this.UP);
+       fly.call(this);
+       drap.call(this);
+	}
+	
+	function fly(){
+		var _this=this;
+		this.fly=setInterval(function(){
+			 _this.speed*=0.98;
+			 var minX=0;
+ 		     var maxX=(document.documentElement.clientWidth||document.body.clientWidth)-_this.offsetWidth;
+		
+			 var curL=_this.offsetLeft+_this.speed;
+			 
+			if(curL>=maxX){
+				curL=maxX;
+				_this.speed*=-1;
+			}else if(curL<=minX){
+				curL=minX;
+				_this.speed*=-1;
+			}
+		   _this.style.left=curL+'px';
+		   if(Math.abs(_this.speed)<0.5){
+		   	window.clearInterval(_this.fly);
+		   	return;
+		   }
+		},10)
+		
+	}
+	function drap(){
+		var _this=this;
+		this.flag=0;
+	
+		 _this.drap=window.setInterval(function(){
+		 	
+		 	if(_this.flag>1){
+		 		window.clearInterval(_this.drap)
+		 	}
+		 	
+			_this.speedT=!_this.speedT?10:_this.speedT+10;
+			_this.speedT*=0.98;
+			
+		
+		var maxY=(document.documentElement.clientHeight||document.body.clientHeight)-_this.offsetHeight;
+		var curT=_this.offsetTop+_this.speedT;
+		
+		if(curT>=maxY){
+			_this.style.top=maxY+'px';
+			_this.speedT*=-1;
+			_this.flag++;
+			
+		}else{
+			_this.style.top=curT+'px';
+			_this.flag=0;
+		}
+		
+		},10)
+		
+	}
+</script>

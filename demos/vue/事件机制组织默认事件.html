@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div><a href="http://www.baidu.com" class="aa" @click.prevent="fn">阻止默认事件</a></div>
+		
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+	new Vue({
+		el:".aa",
+		methods:{
+			fn(){
+				alert(1)
+			}
+		}
+	})
+</script>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table thead tr{
+				background:#FF6600;
+				color: #fff;
+				text-align: center;
+			}
+			table tbody tr{
+				text-align: center;
+			}
+			.bg{
+				background: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<table cellpadding="0" cellspacing="0" width="500" id="table">
+			<thead>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+				<th>等级</th>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+	</body>
+</html>
+<script>
+	var otable=document.getElementById('table');
+	var otHead=otable.tHead;
+	var otBody=otable.tBodies[0];
+	var headCells=otHead.rows[0].cells;
+	var rows=otBody.rows;
+	var data=null;
+	function jsonParse(val){
+		 
+		 if('JSON'in window){
+              return JSON.parse(val)
+		 }else{
+		    return 	eval("("+val+")")
+		 }
+		
+	}
+	
+	
+	function jsonBind(){
+		var val=null;
+		var xml=new XMLHttpRequest();
+		
+		xml.open('GET','jsondata.txt',false);
+		
+		xml.onreadystatechange=function(){
+			
+			if(xml.readyState==4&&xml.status==200){
+				
+				 val=xml.responseText
+				
+			}
+		}
+		xml.send(null)
+		return val;
+	}
+  data=jsonParse(jsonBind())
+	
+	function bindTable(){
+		var frg=document.createDocumentFragment();
+		
+		for(var i=0;i<data.length;i++){
+			var c_tr=document.createElement('tr');
+			
+			for(var key in data[i]){
+				var c_td=document.createElement('td');
+				if(key=='sex'){
+					c_td.innerHTML=data[i][key]==0?"男":"女";
+				}else{
+					c_td.innerHTML=data[i][key];
+				}
+				
+				
+				c_tr.appendChild(c_td);
+			}
+			frg.appendChild(c_tr);
+		}
+		otBody.appendChild(frg)
+		
+	}
+	
+	bindTable()
+	
+	changeBg(rows)
+	function changeBg(rows){
+		for(var i=0;i<rows.length;i++){
+			rows[i].className=i%2==0?'bg':'';
+		}
+		
+	}
+	
+	
+	function listToArr(lists){
+		var ary=[];
+		try{
+			ary=Array.prototype.slice.call(lists);
+		}catch(e){
+			for(var i=0;i<lists.length;i++){
+				ary[ary.length]=lists[i]
+			}
+		}
+		return ary;
+	}
+	
+	
+ var aRows=listToArr(rows);
+ 
+for(var i=0;i<headCells.length;i++){
+	headCells[i].index=i;
+	headCells[i].flag=-1;
+	
+	headCells[i].onclick=function(){
+		this.flag*=-1;
+	
+	     for(var i=0;i<headCells.length;i++){
+	     	if(headCells[i]!==this){
+	     		headCells[i].flag=-1;
+	     	}
+	     }
+		sort.call(this)
+		changeBg(rows)
+	}
+}
+ 
+ function sort(){
+ 	
+ 	
+ 	var frg=document.createDocumentFragment();
+ 	
+    var _that=this;
+ 	
+ 	aRows.sort(function(a,b){
+ 		if(isNaN( a.cells[_that.index].innerHTML)||isNaN(b.cells[_that.index].innerHTML)){
+ 			
+ 			return (a.cells[_that.index].innerHTML.localeCompare(b.cells[_that.index].innerHTML))*_that.flag;
+ 			
+ 		}else{
+ 			return (parseFloat( a.cells[_that.index].innerHTML)-parseFloat(b.cells[_that.index].innerHTML))*_that.flag;
+ 		}
+	
+  });
+  for(var i=0;i<aRows.length;i++){
+  	var cur=aRows[i];
+  	frg.appendChild(cur)
+  }
+  otBody.appendChild(frg);
+ }
+ 
+ 
+ 
+ 
+if(isNaN(['1'])){
+	console.log(1)
+}else{console.log(2)}
+
+	
+</script>

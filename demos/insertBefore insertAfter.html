@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1></h1>
+		<h2></h2>
+		<p></p>
+		
+		<div id="box">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			
+			<h3><p></p></h3>
+			<h4></h4>
+			<h5></h5>
+		</div>
+		<p id="p1"></p>
+		<h2></h2>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById('box');
+		var p1=document.getElementById('p1');
+		
+		//console.log(utils.insertBefore(oDiv,p1));
+		console.log(utils.insertAfter(oDiv,p1));
+	}
+</script>

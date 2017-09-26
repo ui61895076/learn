@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			.tabChange{
+				width: 400px;
+				height: 300px;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			.tabList{
+				width: 400px;
+				height: 30px;
+				overflow: hidden;
+				list-style: none;
+					position: relative;
+				top: 1px;
+				z-index: 999;
+				
+			}
+			.tabList li{
+				float: left;
+				width: 50px;
+				height: 28px;
+				border: 1px solid #2E8B57;
+				margin-right: 10px;
+				cursor: pointer;
+			
+				
+				
+			}
+			.tabList .selectbg{
+				background: #2E8B57;
+				border: 1px solid #2E8B57;
+				border-bottom: none;
+				
+			}
+			.tabCont{
+				width: 398px;
+				height:268px;
+				border: 1px solid #2E8B57;
+				position: relative;
+			}
+			.tabContBlock{
+				width: 398px;
+				height: 268px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tabChange" id="tabChange1">
+			<ul class="tabList">
+				<li class="selectbg">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+			<div class="tabCont">
+				<div class="tabContBlock">1</div>
+				<div class="tabContBlock">2</div>
+				<div class="tabContBlock">3</div>
+				<div class="tabContBlock">4</div>
+			</div>
+		</div>
+		<div class="tab1">
+		   <div class="tabChange" id="tabChange2">
+			<ul class="tabList">
+				<li class="selectbg">1</li>
+				<li>2</li>
+			</ul>
+			<div class="tabCont">
+				<div class="tabContBlock">1</div>
+				<div class="tabContBlock">2</div>
+			</div>
+		</div>
+		</div>
+	
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script type="text/javascript" src="tabChange.js" ></script>
+<script>
+//	var tabChange=document.getElementById('tabChange1');
+//	var tabList=utils.getElementsByClassName('tabList',tabChange)[0];
+//	var alistLi=tabList.getElementsByTagName('li');
+//	var tabCont=utils.getElementsByClassName('tabCont',tabChange)[0];
+//	var atabContBlock=utils.getElementsByClassName('tabContBlock',tabCont);
+//	
+//	function listChange(){
+//		
+//		for(var i=0;i<alistLi.length;i++){
+//			
+//			alistLi[i].index=i;
+//			alistLi[i].onclick=function(){
+//				
+//				utils.addClass(this,'selectbg');
+//				var siblingsLi=utils.siblings(this);
+//				for(var j=0;j<siblingsLi.length;j++){
+//					utils.removeClass(siblingsLi[j],'selectbg')
+//				}
+//				for(var j=0;j<atabContBlock.length;j++){
+//					this.index==j?utils.css(atabContBlock[j],'display','block'):utils.css(atabContBlock[j],'display','none');
+//				}
+//					
+//				
+//				
+//			}
+//		}
+//	}
+//	listChange();
+//	
+	
+var tabChange=new TabChange('tabChange1');
+var tabChange2=new TabChange('tabChange2');
+
+</script>

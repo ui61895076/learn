@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="warp">
+			<div class="parent" @click='fn'>
+				父级点击
+			    <div class="child" @click.stop='fn'>子级点击</div>
+		    </div>
+		</div>
+		
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+//事件冒泡 @事件名.stop
+	new Vue({
+		el:'.warp',
+		methods:{
+			fn(){
+				console.log(1)
+			}
+		}
+	})
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<style></style>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+	var oDiv=utils.getElementsByClassName('box')[0];
+
+//function setGroupCss(ele,option){
+//	option=option||0;
+//	if(Object.prototype.toString.call(option)!=='[object Object]'){	
+//		return;
+//	}
+//	for(var key in option){		 
+//			if(option.hasOwnProperty(key)){
+//				utils.setCss(ele,key,option[key]);
+//			}	
+//	}
+//	
+//}
+	utils.setGroupCss(oDiv,{
+		width:200,
+		height:100,
+		opacity:0.5,
+		background:'red',
+		border:"1px solid #ccc"
+	})
+</script>

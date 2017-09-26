@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+    var oDiv=document.getElementById('box');
+	var target= utils.getWin('clientWidth')-oDiv.offsetWidth;
+	
+	var begin=utils.css(oDiv,'left');
+	var duation=2000;
+	var change=target-begin;
+	var time=null;
+    var timer=null;
+   
+   function move(t,d,c,b){
+   	return t/d*c+b;
+   }
+    
+    timer=window.setInterval(function(){
+       time+=10;
+       if(time>=duation){
+       		window.clearInterval(timer);
+       	utils.css(oDiv,'left',target);
+       
+       }
+       var pos=move(time,duation,change,begin);
+       utils.css(oDiv,'left',pos);
+       	
+    },10)
+    
+    
+</script>

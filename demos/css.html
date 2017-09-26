@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#box{
+			width: 200px;
+			height: 300px;
+		}
+	</style>
+	<body>
+		<div id="box" >1111</div>
+		
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+var oDiv =document.getElementById('box');
+//	function css(ele){
+//		if(typeof arguments[1]==='string'){			
+//			if(!arguments[2]){
+//				console.log(this)
+//				return utils.getCss.apply(utils,arguments)
+//				//return utils.getCss(ele,arguments[1]);
+//			}
+//			
+//			utils.setCss.apply(utils,arguments);
+//			//utils.setCss(ele,arguments[1],arguments[2]);
+//			
+//		}
+//		if(Object.prototype.toString.call(arguments[1])=='[object Object]'){
+//			utils.setGroupCss.apply(utils.arguments)
+//			//utils.setGroupCss(ele,arguments[1]);
+//		}
+//	}//
+//	//第一种情况，只传两个值， 可能是获取getCss(ele,attr) 可能是批量设置//setCss(ele,attr,num)  setGroupCss (ele,{})
+//	//第二种情况，传三个值，单独设置；
+	
+//console.log(utils.css(oDiv,'width'));
+//console.log(utils.css(oDiv,'width',800));
+utils.css(oDiv,{
+	widht:800,
+	height:500,
+	opacity:0.5
+})
+</script>

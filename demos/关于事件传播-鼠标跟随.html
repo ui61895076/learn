@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			.box{
+				  width: 500px;
+            height: 500px;
+            background: lightgoldenrodyellow;
+            position: relative;
+            margin:30px auto;
+			}
+			.mask{
+				display: none;
+            position: absolute;
+            left:0;
+            top:0;
+            width: 100px;
+            height: 100px;
+            background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+	</body>
+</html>
+<script>
+//	~function(){
+//		var box=document.getElementsByClassName('box')[0];
+//		
+//		var mask=document.getElementsByClassName('mask')[0];
+//		box.onmouseover=function(e){
+//			e=e||window.event;
+//			var mask=document.createElement('div');
+//		mask.className='mask';
+//		box.appendChild(mask);
+//			
+//			var left=e.clientX-box.offsetLeft;
+//			var top=e.clientY-box.offsetTop;
+//			mask.style.display='block';
+//			mask.style.left=left+'px';
+//			mask.style.top=top+'px';
+//			
+////			mask.onmouseover=function(e){
+////				
+////				e= e||window.event;
+////				
+////			e.stopPropagation? e.stopPropagation(): e.cancelBubble=true;
+////			}
+////			mask.onmouseout=function(e){
+////				e= e||window.event;
+////				e.stopPropagation? e.stopPropagation(): e.cancelBubble=true;
+////			}
+//			
+//		}
+//		
+//		box.onmousemove=function(e){
+//			
+//			var mask=document.getElementsByClassName('mask')[0];
+//			
+//			e=e||window.event;
+//			if(mask){
+//				var left=e.clientX-box.offsetLeft+20;
+//			var top=e.clientY-box.offsetTop+20;
+//				mask.style.left=left+'px';
+//			mask.style.top=top+'px';
+//			}
+//			
+//			
+//			
+//		
+//		}
+//		
+//		box.onmouseout=function(e){
+//			var mask=document.getElementsByClassName('mask')[0]
+//			if(mask){
+//				this.removeChild(mask);
+//			}
+//			
+//		}
+//		
+//	}()
+//	
+//
+//	
+//	
+//	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	~function(){
+		var box=document.getElementsByClassName('box')[0];
+		
+		box.addEventListener('mouseover',function(e){
+				var mask=document.createElement('div');
+		mask.className='mask';
+		box.appendChild(mask);
+			e=e||window.event;
+			var left=e.clientX-box.offsetLeft;
+			var top=e.clientY-box.offsetTop;
+			mask.style.display='block';
+			mask.style.left=left+'px';
+			mask.style.top=top+'px';
+			mask.onmouseover=function(e){
+				
+				e= e||window.event;
+				
+				e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+			}
+			mask.onmouseout=function(e){
+				e= e||window.event;
+				e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+			}
+		
+		},false)
+		
+		
+		box.addEventListener('mousemove',function(e){
+			var mask=document.getElementsByClassName('mask')[0]
+			e=e||window.event;
+			var left=e.clientX-box.offsetLeft+10;
+			var top=e.clientY-box.offsetTop+10;
+				mask.style.left=left+'px';
+			mask.style.top=top+'px';
+		},false)
+	
+		box.addEventListener('mouseout',function(e){
+			var mask=document.getElementsByClassName('mask')[0]
+			this.removeChild(mask);
+		},false)
+	
+		
+	}()
+</script>

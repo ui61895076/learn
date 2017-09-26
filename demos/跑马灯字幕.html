@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文字跑马灯</title>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			#box{
+				margin-left: 200px;
+				width: 600px;
+				height: 40px;
+				line-height: 40px;
+				background: #CCCCCC;
+				border: 1px seagreen solid;
+				white-space: nowrap;
+				overflow:hidden;
+				
+			}
+			#box p{
+				display:inline-block;
+				width: auto;
+				height: 40px;
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p id="p1"><strong>头条新闻01</strong>1945502郭声琨会见香港特区政府代表团-搜狐新闻 1243803浙江百户村民刚住新居遭拆迁新居遭拆迁243803浙江百户村民刚住新居遭拆</p>
+			<p><strong>头条新闻01</strong>1945502郭声琨会见香港特区政府代表团-搜狐新闻 1243803浙江百户村民刚住新居遭拆迁新居遭拆迁243803浙江百户村民刚住新居遭拆</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="units.js" ></script>
+<script>
+	window.onload=function(){
+		var box=document.getElementById('box');
+		var p1=document.getElementById('p1');
+		var timer=null;
+		
+		var p1W=utils.getCss(p1,'width');
+		console.log(p1W)
+		
+		timer=setInterval(function(){
+			box.scrollLeft++;
+	
+			
+			if(box.scrollLeft>=p1W){
+			 box.scrollLeft=0;
+			}
+			
+		},20)
+		console.log(1)
+	}
+</script>

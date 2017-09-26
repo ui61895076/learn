@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box">
+			<li v-for='(val,index) in ary'>
+				{{index}}
+			</li>
+		</div>
+	</body>
+</html>
+<script src="vue2.js"></script>
+<script>
+//在1.0中（index,val）顺序是不能变的 ，支持{{&index}}写法
+//在2.0中（val,index）不存在顺序的问题，不支持{{&index}}写法
+//如果不用（val,index）小括号的写法  直接写成v-for='a in ary' a就是对应的数组中的每一项
+	var vm=new Vue({
+		el:".box",
+		data:{
+			ary:['a','n','c',1]
+		}
+	})
+</script>

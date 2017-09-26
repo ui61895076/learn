@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<style></style>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+	var oDiv=utils.getElementsByClassName('box')[0];
+//	function setCss(ele,attr,value){
+//		if(attr==='float'){
+//			ele['style']['cssFloat']=value;
+//			ele['style']['styleFloat']=value;
+//			return
+//		}
+//		if(attr==='opacity'){
+//			ele['style'][attr]=value;
+//			ele['style']['filter']='alpha(opacity='+value*100+')';
+//			return;
+//		}
+//		
+//		var reg=/^width|height|left|top|bottom|right|(margin(Left|Right|Top|Bottom)?)|(padding(Left|Right|Top|Bottom)?)&/;
+//		if(reg.test(attr)){
+//			if(!isNaN(value)){
+//			    value+='px'	
+//			};
+//		};
+//		
+//		 ele['style'][attr]=value	
+//	}
+	utils.setCss(oDiv,'background','red');
+	utils.setCss(oDiv,'marginLeft','20px');
+	utils.setCss(oDiv,'float','left');
+	utils.setCss(oDiv,'height','200');
+	utils.setCss(oDiv,'width','200');
+	utils.setCss(oDiv,'opacity',0.5);
+</script>

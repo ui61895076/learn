@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>单张图片延迟加载</title>
+		<style>
+			#box{
+				width: 600px;
+				height: 600px;
+				background: url(img/timg.gif) no-repeat center;	
+			}
+			#box img{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="" data-src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3427907640,3205325036&fm=26&gp=0.jpg' />
+		</div>
+	</body>
+</html>
+<script>
+	window.onload=function(){
+		var box=document.getElementById('box');
+		
+		var imgs=box.getElementsByTagName('img')[0];
+		
+		var oImg=new Image();
+		oImg.src=imgs.getAttribute('data-src');
+		oImg.onload=function(){
+			imgs.src=oImg.src;
+			console.log('图片加载成功')
+		}
+		console.log('图片加载中')
+	}
+</script>

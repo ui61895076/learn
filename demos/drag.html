@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		
+		<h1 id="time"></h1>
+		<h1 id="c"></h1>
+		<a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5ODU0NTgwMw==&scene=110#wechat_redirect">一点关注微信</a>
+		<iframe src="http://jslt.im-cc.com/jslt/userBind.do?method=toUserBindPage&wxYsId=gh_121faca0ca33&flag=wx&wxid=R59GQDHzsDn/iyCT/3I21qaz2wsx79dNlp0bNnBvIn1qaz2wsxAGCefMg=&from=singlemessage&isappinstalled=0
+" width="500" height="500"></iframe>
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js" ></script>
+<script>
+	$(function(){//插件的制作，$.fn.extend({}), 工具类的插件    $.extend({});
+		$.fn.extend({
+			drag:function(){
+				var That=$(this);
+				
+				$(this).on('mousedown',function(ev){
+					 var disx=ev.pageX-$(this).offset().left;
+					
+				     var disy=ev.pageY-$(this).offset().top;
+				     $(document).on('mousemove',function(ev){
+					    That.css('left',ev.pageX-disx);
+					    That.css('top',ev.pageY-disy);
+				});
+				$(document).on('mouseup',function(){
+					$(this).off();
+				})
+				});
+				
+			},
+		})
+         $('div').drag();
+         $('h1').drag();
+         
+         
+         
+         function unique(arr){
+         	var newArr=[];
+         	var jsons={};
+         	for(var i=0;i<arr.length;i++){
+         		if(!jsons[arr[i]]){
+         			newArr.push(arr[i]);
+         			jsons[arr[i]]=1;
+         			
+         		}
+         	}
+         	return newArr
+         };
+        //alert(unique([1,3,4,2,4,1,5,3,1,4]))
+	})
+	
+</script>
+<script>
+	window.onload=function(){
+var a=[1,2,3];
+function a(a){
+	
+}
+
+	}
+</script>
+<script>
+	window.onload=function(){
+		//var arr=[1,2,3,1,3,4,5,2,3,1,7,5,4,2,1]
+		
+		function unique(arr){
+			var obj={};
+			for(var i=0;i<arr.length;i++){
+				var cur=arr[i];
+				
+				if(obj[cur]==cur){
+					//arr.splice(i,1);
+					arr[i]=arr[arr.length-1];
+					arr.length--
+					i--;
+					
+				}
+				obj[cur]=cur;
+				
+			}
+			
+			return arr
+		}//去重;
+//		
+//		
+//		function bubbleSort(arr){
+//			var flag=false;//标记的作用用于  看第几轮就提前做好比较了
+//			var c=null;
+//			for(var i=0;i<arr.length-1;i++){
+//				for(var j=0;j<arr.length-1-i;j++){
+//					if(arr[j]>arr[j+1]){
+//						c=arr[j+1];
+//						arr[j+1]=arr[j];
+//						arr[j]=c;
+//						flag=true;
+//					
+//					}
+//					
+//				}
+//				if(flag){
+//						
+//						flag=false
+//					}else{
+//						break;
+//					}
+//			}
+//			return arr
+//			
+//		}//冒泡排序
+//		
+//		
+//		
+//		function quickSort(arr){
+//			if(arr.length<=1){
+//				return arr
+//			}
+//			var pointIndex=Math.floor((arr.length)/2);
+//			var pointValue=arr.splice(pointIndex,1)[0];
+//			
+//			var arrLeft=[];
+//			var arrRight=[];
+//			
+//			for(var i=0;i<arr.length;i++){
+//				if(arr[i]<pointValue){
+//					arrLeft.push(arr[i]);
+//				}else{
+//					arrRight.push(arr[i]);
+//				}
+//			}
+//			return(arguments.callee(arrLeft).concat(pointValue,arguments.callee(arrRight)));
+//		}
+		
+//	    function insertSort(arr){
+//	    	var ary=[];
+//	    	ary.push(arr[0]);
+//	    	for(var i=1;i<arr.length;i++){
+//	    		for(var j = ary.length-1;j>=0; ){
+//	    			if(arr[i]<ary[j]){
+//	    				j--;
+//	    				if(j===-1){
+//	    					ary.unshift(arr[i])
+//	    				};
+//	    			}else{
+//	    				ary.splice(j+1,0,arr[i]);
+//	    				j=-1;
+//	    			}
+//	    		}
+//	    	}
+//	    	alert (ary);
+//	    }
+//	 insertSort(arr)
+//	 
+//var time=document.getElementById('time');
+//time.innerHTML=forMatTime();
+//function forMatTime(){
+//	 var nowTime=new Date();
+//	 var year=nowTime.getFullYear();
+//	 var month=nowTime.getMonth()+1;
+//	 var day=nowTime.getDate();
+//	 var week=nowTime.getDay();//0-6;
+//	 var weekstr='日一二三四五六';
+//	 var weeks=weekstr.charAt(week);
+//	 
+//	 var hours=nowTime.getHours();
+//	 var min=nowTime.getMinutes();
+//	 var sec=nowTime.getSeconds();
+//	 return year+'年'+month+'月'+addZero(day)+'日 '+'星期'+weeks+' '+addZero(hours)+'时'+addZero(min)+'分'+addZero(sec)+'秒';
+//}
+//
+//function addZero(val){
+//	return val<10?'0'+val:val;
+//}
+//var timer=null;
+//
+//setInterval(function(){
+//	time.innerHTML=forMatTime();
+//},1000)
+// 
+// var h=document.getElementById('c');
+//function countDown(){
+//var time=new Date('2017/03/21 10:08:00');
+//var nowTime=new Date();
+//var spanTime=time.getTime()-nowTime.getTime();
+//
+//var day=Math.floor(spanTime/(1000*60*60*24));
+//var dayMs=day*1000*60*60*24;
+//var spanday=spanTime-dayMs;
+//
+//var hours=Math.floor(spanday/(1000*60*60));
+//var hoursMs=hours*60*60*1000;
+//
+//var minspan= spanday-hoursMs;
+//var min=Math.floor(minspan/(1000*60));
+//
+//var minMs=min*1000*60;
+//
+//var secspan=minspan-minMs;
+//var sec=Math.floor(secspan/1000);
+//var secMs=sec*1000;
+//var spansec=secspan-secMs;
+//var secmil=spansec/10
+//if(spanTime<=0){
+//	return '结束'
+//}else{
+//	return '倒计时:'+day+':'+hours+':'+min+':'+sec+':'+secmil;
+//}
+//
+// }
+//
+// 
+// var timer2=setInterval(function(){
+// 	 h.innerHTML=countDown()
+// },1)
+ 
+ 
+ 
+ 
+// function randomUnique(){
+// 	var ary=[];
+// 	
+// 	
+// 	for(var i=0;i<20;i++){
+// 		
+// 		ary.push(Math.round(Math.random()*10+0));
+// 		
+// 	}
+// 	unique(ary)
+// 	
+//  
+// 	return ary.slice(0,4)
+// }
+
+
+
+// function randomUnique(){
+// 	var ary=[];
+// 	
+// 	
+// 	while(unique(ary).length<4){
+// 		
+// 		ary.push(Math.round(Math.random()*10+0));
+// 		
+// 	}
+// 	
+// 	unique(ary)
+// 	
+//  
+// 	return ary
+// }
+// 
+
+
+// function fn(){
+// 	console.log('2')
+// }
+// 
+// 
+//fn()
+
+var reg = /\d/;
+
+console.log(reg.test('1'))
+	
+</script>

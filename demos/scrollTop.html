@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点击返回顶部</title>
+		<style>
+		body{
+			height: 2000px;
+		}
+			#box{
+				width: 50px;
+				height: 50px;
+				background: #CC3300;
+				position: fixed;
+				bottom: 100px;
+				right: 100px;
+				display: none;
+				
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="units.js" ></script>
+<script>
+	window.onload=function(){
+		var box=document.getElementById('box');
+		window.onscroll=function(){
+			if(utils.getWin('scrollTop')>500){
+			   box.style.display='block';
+			}
+			if(utils.getWin('scrollTop')==0){
+				box.style.display='none';
+			}
+		}
+		box.onclick=function(){
+				utils.getWin('scrollTop',0);
+				this.style.display='none';
+		}
+	}
+</script>

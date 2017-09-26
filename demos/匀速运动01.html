@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+    var oDiv=document.getElementById('box');
+	var maxLeft= utils.getWin('clientWidth')-oDiv.clientWidth;
+	
+	var duration=2000;
+	var step=(maxLeft/duration)*23;
+	console.log(step)
+    var timer=null;
+    timer=window.setInterval(function(){
+    	var curLeft=utils.getCss(oDiv,'left');
+    	curLeft+=step;
+    	if(curLeft>=maxLeft){
+    		 utils.css(oDiv,'left',maxLeft)
+    		window.clearInterval(timer);
+    		return;
+    	}
+        utils.css(oDiv,'left',curLeft)
+    },10)//设置总时间，总距离 ，得出步长；
+</script>

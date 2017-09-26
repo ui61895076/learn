@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul li{
+				line-height: 30px;
+			}
+			.box{
+				height: auto;
+				width: 500px;
+				border: 1px solid #008000;
+				
+			}
+			
+			.close{
+				width: 20px;
+				height: 20px;
+				background: #008000;
+				display:inline-block;
+			}
+			.two,.three,.four{
+				display: none;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<ul id="menu">
+				<li>
+					<em class="close"></em><span>第一级菜单选项</span>
+					<ul class="two">
+						<li>第一级下第二级菜单</li>
+						<li>第一级下第二级菜单</li>
+					</ul>
+				</li>
+				<li>
+					<em class="close"></em><span>第二级菜单选项</span>
+					<ul class="two">
+						<li>
+							<em class="close"></em><span>第二级下第二级菜单</span>
+							<ul class="three">
+								<li>
+									<em class="close"></em><span>第二级下第二级菜单</span>
+								    <ul class="four">
+						                <li>第2级下第4级菜单</li>
+						               <li>第2级下第4级菜单</li>
+					                 </ul>
+								</li>
+						        <li>第2级下第3级菜单</li>
+							</ul>
+						</li>
+						<li>第二级下第二级菜单</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="utils.js" ></script>
+<script>
+	var box=document.getElementById('box');
+	var menu=document.getElementById('menu');
+	
+	
+	box.onclick=function(e){
+		e=e||window.event;
+		e.target=e.target||e.srcElement;
+	    
+		if(/^em|span$/.test(e.target.tagName.toLowerCase())){
+			e.target.style.cursor='pointer';
+			var firstUl=utils.children(e.target.parentNode,'ul')[0];
+			
+			var flag=utils.css(firstUl,'display')=='none'?true:false;
+			var em=utils.children(e.target.parentNode,'em')[0]
+			
+			if(flag){
+				firstUl.style.display='block';
+				em.style.background='#ff0'
+			}else{
+				var ul=e.target.parentNode.getElementsByTagName('ul');
+				console.log(e.target)
+				for(var i=0;i<ul.length;i++){
+					ul[i].style.display='none';
+				}
+				firstUl.style.display='none';
+				em.style.background='#ccc'
+			}
+			
+			
+			
+		}
+	}
+</script>
